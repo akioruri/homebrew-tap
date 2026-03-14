@@ -1,0 +1,50 @@
+cask "calibre" do
+  on_monterey :or_older do
+    on_catalina :or_older do
+      version "6.11.0"
+      sha256 "d7c40f3f35ba9043c13303632526f135b2c4086471a5c09ceb8b397c55c076fa"
+    end
+    on_big_sur do
+      version "6.29.0"
+      sha256 "2f76428ae19617875c5725cd892751a80eb2acdda76e06cd19c2f21a63966998"
+    end
+    on_monterey do
+      version "6.29.0"
+      sha256 "2f76428ae19617875c5725cd892751a80eb2acdda76e06cd19c2f21a63966998"
+    end
+
+    livecheck do
+      skip "Legacy version"
+    end
+  end
+  on_ventura :or_newer do
+    version "9.5.0"
+    sha256 "b68d9d97b9efe6ed1de3c5dd85640349b857b47093568d81ff6a2af83848d13b"
+
+    livecheck do
+      url "https://calibre-ebook.com/dist/osx"
+      strategy :header_match
+    end
+  end
+
+  # Do not change this URL to the GitHub repo. Releases are removed from GitHub
+  # after a new release, which breaks the cask. We have accepted that downloads
+  # from the homepage may be slow for some users.
+  # See https://github.com/Homebrew/homebrew-cask/pull/183664
+  url "https://download.calibre-ebook.com/#{version}/calibre-#{version}.dmg"
+  name "calibre"
+  desc "E-books management software"
+  homepage "https://calibre-ebook.com/"
+
+  app "calibre.app"
+
+  zap trash: [
+    "~/Library/Application Support/calibre-ebook.com",
+    "~/Library/Caches/calibre",
+    "~/Library/Preferences/calibre",
+    "~/Library/Preferences/com.calibre-ebook.ebook-viewer.plist",
+    "~/Library/Preferences/net.kovidgoyal.calibre.plist",
+    "~/Library/Saved Application State/com.calibre-ebook.ebook-viewer.savedState",
+    "~/Library/Saved Application State/net.kovidgoyal.calibre.savedState",
+  ]
+end
