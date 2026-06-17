@@ -3,12 +3,12 @@ cask "feishu" do
   livecheck_arch = on_arch_conditional arm: "_m1"
 
   on_arm do
-    version "7.66.5,1ec6582e"
-    sha256 "8eb1ff062b68b6045b9d231c8b4ba00ebda4c51f48a93792b9ff02523d8b3d96"
+    version "7.70.10,9451977a"
+    sha256 "6ad76859cd9422a5bc719c689d73380a49dafcd5ab4679f138f48e6c6d5b670c"
   end
   on_intel do
-    version "7.66.5,1b5e2d12"
-    sha256 "09668e8ddac1db245857daf0d513c3200e2951c8039a0d6e987151733b2f8822"
+    version "7.70.10,c2ec64aa"
+    sha256 "31c492f403957e971d5f87742802dd0532e96ccbb333908e6de018ed169d17b7"
   end
 
   url "https://sf3-cn.feishucdn.com/obj/ee-appcenter/#{version.csv.second}/Feishu-darwin_#{arch}-#{version.csv.first}-signed.dmg",
@@ -29,7 +29,7 @@ cask "feishu" do
   end
 
   auto_updates true
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   app "Lark.app"
 
