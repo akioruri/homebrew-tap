@@ -3,16 +3,15 @@ cask "feishu" do
   livecheck_arch = on_arch_conditional arm: "_m1"
 
   on_arm do
-    version "7.70.10,9451977a"
-    sha256 "6ad76859cd9422a5bc719c689d73380a49dafcd5ab4679f138f48e6c6d5b670c"
+    version "8.0.3,ceb4c744"
+    sha256 "0d6fb70cfea91a7a4eefccbd357c167b94f22fc507f824a4e8ed438e77680b46"
   end
   on_intel do
-    version "7.70.10,c2ec64aa"
-    sha256 "31c492f403957e971d5f87742802dd0532e96ccbb333908e6de018ed169d17b7"
+    version "8.0.3,8d3fe0a4"
+    sha256 "bc0704418c33a90f384c0bcdf1d2b64d840ed1f151ec8a14b99bde3a126cf023"
   end
 
-  url "https://sf3-cn.feishucdn.com/obj/ee-appcenter/#{version.csv.second}/Feishu-darwin_#{arch}-#{version.csv.first}-signed.dmg",
-      verified: "sf3-cn.feishucdn.com/obj/ee-appcenter/"
+  url "https://sf3-cn.feishucdn.com/obj/ee-appcenter/#{version.csv.second}/Feishu-darwin_#{arch}-#{version.csv.first}-signed.dmg"
   name "Feishu"
   desc "Project management software"
   homepage "https://www.feishu.cn/"
@@ -29,8 +28,9 @@ cask "feishu" do
   end
 
   auto_updates true
-  depends_on macos: :big_sur
+  depends_on :macos
 
+  # Renamed for consistency: app name is different in the Finder and in a shell.
   app "Lark.app"
 
   zap trash: [
